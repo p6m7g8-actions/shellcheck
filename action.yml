@@ -1,6 +1,12 @@
-name: "P6 GHA: Shellcheck"
-description: "P6 GHA: Shellcheck"
+name: "P6 GHA: ShellCheck"
+description: "P6 GHA: ShellCheck"
 author: "Philip M. Gollucci"
+
+inputs:
+  shellcheck:
+    description: "Run shellCheck (true/false)"
+    required: false
+    default: "true"
 
 runs:
   using: "composite"
@@ -8,5 +14,6 @@ runs:
     - name: Checkout code
       uses: actions/checkout@v5.0.0
 
-    - name: "Shellcheck"
+    - name: "ShellCheck"
+      if: ${{ inputs.shellcheck == 'true' }}
       uses: ludeeus/action-shellcheck@2.0.0
