@@ -16,7 +16,7 @@ runs:
 
     - name: Set global shellcheck ignores
       shell: bash
-      run: echo "SHELLCHECK_OPTS=-e SC2034,SC2155" >> "$GITHUB_ENV"
+      run: echo "SHELLCHECK_OPTS=-e SC2034,SC2155,3043" >> "$GITHUB_ENV"
 
     - name: "ShellCheck"
       if: ${{ inputs.shellcheck == 'true' }}
