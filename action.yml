@@ -7,6 +7,10 @@ inputs:
     description: "Run shellCheck (true/false)"
     required: false
     default: "true"
+  ignore_paths:
+    description: "Space-separated paths/globs to skip"
+    required: false
+    default: ""
 
 runs:
   using: "composite"
@@ -21,3 +25,5 @@ runs:
     - name: "ShellCheck"
       if: ${{ inputs.shellcheck == 'true' }}
       uses: ludeeus/action-shellcheck@2.0.0
+      with:
+        ignore_paths: ${{ inputs.ignore_paths }}
