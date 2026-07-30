@@ -18,12 +18,13 @@ runs:
     - name: Checkout code
       uses: p6m7g8-actions/checkout@main
 
-    - name: Set global shellcheck ignores
-      shell: bash
-      run: echo "SHELLCHECK_OPTS=-e SC1091,SC2016,SC2034,SC2155,SC3043" >> "$GITHUB_ENV"
-
     - name: "ShellCheck"
       if: ${{ inputs.shellcheck == 'true' }}
       uses: ludeeus/action-shellcheck@2.0.0
+      # Scoped to this step only. Writing this to $GITHUB_ENV instead would
+      # persist it for the rest of the calling job and silently disable these
+      # checks for every later shellcheck invocation in that job.
+      env:
+        SHELLCHECK_OPTS: "-e SC1091,SC2016,SC2034,SC2155,SC3043"
       with:
         ignore_paths: ${{ inputs.ignore_paths }}
