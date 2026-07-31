@@ -16,7 +16,7 @@ runs:
   using: "composite"
   steps:
     - name: Checkout code
-      uses: p6m7g8-actions/checkout@main
+      uses: p6m7g8-actions/gh-repo-checkout@main
 
     - name: "ShellCheck"
       if: ${{ inputs.shellcheck == 'true' }}
