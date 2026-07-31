@@ -7,5 +7,5 @@
 
 ```yml
       - name: Build
-        uses: p6m7g8-actions/shellcheck@main
+        uses: p6m7g8-actions/p6-shell-lint@main
 ```
